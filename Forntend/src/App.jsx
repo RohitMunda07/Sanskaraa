@@ -1,16 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import HomePage from "./pages/Home"; // Make sure this is named HomePage not Home
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home.jsx';
+import Layout from './components/Layout/Layout.jsx';
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<HomePage />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Layout />} />
+      <Route path="/home" element={<Home />} />
+      {/* Add more routes here as needed */}
+    </Routes>
   );
 };
 
