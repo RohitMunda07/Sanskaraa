@@ -1,0 +1,1 @@
+const Lighting = () => <div>Lighting Page</div>; export default Lighting;

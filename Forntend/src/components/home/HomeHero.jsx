@@ -1,0 +1,1 @@
+const HomeHero = () => <section>Hero Section</section>; export default HomeHero;

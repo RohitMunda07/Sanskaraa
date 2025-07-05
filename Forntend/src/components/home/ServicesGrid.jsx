@@ -1,0 +1,1 @@
+const ServicesGrid = () => <section>Services Grid</section>; export default ServicesGrid;

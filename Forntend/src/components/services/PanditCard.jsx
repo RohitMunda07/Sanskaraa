@@ -1,0 +1,1 @@
+const PanditCard = () => <div>Pandit Card</div>; export default PanditCard;

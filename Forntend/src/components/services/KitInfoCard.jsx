@@ -1,0 +1,1 @@
+const KitInfoCard = () => <div>Kit Info Card</div>; export default KitInfoCard;

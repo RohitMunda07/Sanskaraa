@@ -1,0 +1,1 @@
+const Store = () => <div>Store Page</div>; export default Store;

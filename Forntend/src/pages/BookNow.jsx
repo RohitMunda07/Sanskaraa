@@ -1,0 +1,1 @@
+const BookNow = () => <div>Book Now Page</div>; export default BookNow;

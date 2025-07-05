@@ -1,0 +1,1 @@
+const BookingForm = () => <form>Booking Form</form>; export default BookingForm;

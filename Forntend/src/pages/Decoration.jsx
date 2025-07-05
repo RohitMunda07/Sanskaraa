@@ -1,0 +1,1 @@
+const Decoration = () => <div>Decoration Page</div>; export default Decoration;

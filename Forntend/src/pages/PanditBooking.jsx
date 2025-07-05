@@ -1,0 +1,1 @@
+const PanditBooking = () => <div>Pandit Booking Page</div>; export default PanditBooking;

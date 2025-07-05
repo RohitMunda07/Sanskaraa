@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskaraa - Your One-Stop Ritual & Event Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://placehold.co/1920x1080') no-repeat center center;
+            background-size: cover;
+            height: 70vh;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .testimonial-card {
+            border-left: 4px solid #f59e0b;
+        }
+        .event-dropdown:hover .event-dropdown-menu {
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-amber-800 text-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://placehold.co/50x50" alt="Sanskaraa logo - traditional diya with flame in orange and gold colors" class="rounded-full">
+                <a href="#" class="text-xl font-bold">Sanskaraa</a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#services" class="hover:text-amber-200">Services</a>
+                <div class="event-dropdown relative">
+                    <button class="hover:text-amber-200 flex items-center">
+                        Events <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                    </button>
+                    <div class="event-dropdown-menu absolute hidden bg-white text-gray-800 mt-2 py-2 rounded shadow-lg w-48">
+                        <a href="#" class="block px-4 py-2 hover:bg-amber-50">Weddings</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-amber-50">Griha Pravesh</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-amber-50">Pooja Ceremonies</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-amber-50">Satyanarayan Katha</a>
+                    </div>
+                </div>
+                <a href="#about" class="hover:text-amber-200">About Us</a>
+                <a href="#contact" class="hover:text-amber-200">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded-full font-medium transition">
+                    <i class="fas fa-user-plus mr-2"></i>Register
+                </button>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg flex items-center justify-center text-center text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Sanskaraa</h1>
+                <p class="text-xl md:text-2xl mb-8">Your One-Stop Ritual & Event Partner<br>
+                <span class="text-amber-300 font-semibold">"Har Karya Mein, Aapke Saath"</span></p>
+                <button class="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition">
+                    Explore Services <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">The Problem We Solve</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Organizing traditional Indian events is complex with fragmented vendors and lack of trust. We bring everything together in one trusted platform.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-amber-50 p-6 rounded-lg">
+                    <div class="text-amber-600 text-3xl mb-4">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Time-Consuming</h3>
+                    <p class="text-gray-600">
+                        Searching for multiple vendors takes weeks of coordination and negotiations.
+                    </p>
+                </div>
+                <div class="bg-amber-50 p-6 rounded-lg">
+                    <div class="text-amber-600 text-3xl mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Trust Issues</h3>
+                    <p class="text-gray-600">
+                        No reliable way to verify quality of pandits, decorators or caterers.
+                    </p>
+                </div>
+                <div class="bg-amber-50 p-6 rounded-lg">
+                    <div class="text-amber-600 text-3xl mb-4">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Fragmented</h3>
+                    <p class="text-gray-600">
+                        Different vendors booked separately increases costs and coordination hassles.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-amber-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Comprehensive Services</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    All your ritual and event needs met in one simple platform with verified service providers.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Decoration -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://placehold.co/600x400" alt="Beautiful wedding mandap decoration with flowers and drapes in traditional red and gold colors" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-amber-600 text-2xl mb-2">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Event Decoration</h3>
+                        <p class="text-gray-600 mb-4">
+                            Stunning mandaps, floral arrangements, lighting and theme-based decor for all ceremonies.
+                        </p>
+                        <a href="#" class="text-amber-600 font-medium inline-flex items-center">
+                            View Options <i class="fas fa-chevron-right ml-1 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Catering -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://placehold.co/600x400" alt="Traditional vegetarian thali with metal plates containing various Indian dishes served at events" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-amber-600 text-2xl mb-2">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Catering Services</h3>
+                        <p class="text-gray-600 mb-4">
+                            Authentic satvik food, thali options and menu customization for all event sizes.
+                        </p>
+                        <a href="#" class="text-amber-600 font-medium inline-flex items-center">
+                            View Options <i class="fas fa-chevron-right ml-1 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pandit Booking -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://placehold.co/600x400" alt="Vedic priest conducting a Hindu ceremony with fire pit, flowers and ritual items" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-amber-600 text-2xl mb-2">
+                            <i class="fas fa-hands-praying"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Pandit Ji Booking</h3>
+                        <p class="text-gray-600 mb-4">
+                            Verified priests for all ceremonies with expertise in regional rituals and customs.
+                        </p>
+                        <a href="#" class="text-amber-600 font-medium inline-flex items-center">
+                            Find a Priest <i class="fas fa-chevron-right ml-1 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Puja Samagri -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://placehold.co/600x400" alt="Collection of various Hindu puja items arranged beautifully - incense, flowers, diyas, holy threads and other ritual materials" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-amber-600 text-2xl mb-2">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Puja Samagri Delivery</h3>
+                        <p class="text-gray-600 mb-4">
+                            Complete puja kits for all occasions with same-day delivery available.
+                        </p>
+                        <a href="#" class="text-amber-600 font-medium inline-flex items-center">
+                            Shop Now <i class="fas fa-chevron-right ml-1 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-amber-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Why Choose Sanskaraa?</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Our platform provides everything you need for flawless traditional events.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="mx-auto bg-amber-100 text-amber-600 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-check-circle text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Verified Vendors</h3>
+                    <p class="text-gray-600 text-sm">
+                        All partners carefully vetted for quality and reliability
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="mx-auto bg-amber-100 text-amber-600 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-rupee-sign text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Transparent Pricing</h3>
+                    <p class="text-gray-600 text-sm">
+                        No hidden costs with upfront package pricing
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="mx-auto bg-amber-100 text-amber-600 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-headset text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Ritual Guidance</h3>
+                    <p class="text-gray-600 text-sm">
+                        Expert advice for traditional ceremony requirements
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="mx-auto bg-amber-100 text-amber-600 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Quick Service</h3>
+                    <p class="text-gray-600 text-sm">
+                        Same-day or next-day bookings available
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="mx-auto bg-amber-100 text-amber-600 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-language text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Regional Experts</h3>
+                    <p class="text-gray-600 text-sm">
+                        Pandits specialized in local traditions and languages
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Who Benefits from Sanskaraa?</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    We serve a diverse range of clients seeking authentic traditional services.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="border-t-4 border-amber-500 rounded-lg overflow-hidden bg-gray-50">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-amber-100 text-amber-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-home text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Households</h3>
+                        </div>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2 text-sm"></i>
+                                <span>Families planning Griha Pravesh ceremonies</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2 text-sm"></i>
+                                <span>Parents organizing baby naming ceremonies</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2 text-sm"></i>
+                                <span>Individuals celebrating religious milestones</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t-4 border-amber-500 rounded-lg overflow-hidden bg-gray-50">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-amber-100 text-amber-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-rings-wedding text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Wedding Planners</h3>
+                        </div>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2 text-sm"></i>
+                                <span>Professional event coordinators</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2 text-sm"></i>
+                                <span>Destination wedding organizers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2 text-sm"></i>
+                                <span>Need integrated traditional services</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t-4 border-amber-500 rounded-lg overflow-hidden bg-gray-50">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-amber-100 text-amber-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-globe text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">NRIs & Expats</h3>
+                        </div>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2 text-sm"></i>
+                                <span>Diaspora seeking authentic rituals abroad</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2 text-sm"></i>
+                                <span>Limited access to reliable priests locally</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2 text-sm"></i>
+                                <span>Need puja items shipped internationally</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model Section -->
+    <section class="py-16 bg-amber-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Sustainable Business Model</h2>
+                <p class="text-amber-200 max-w-3xl mx-auto">
+                    Our revenue streams ensure quality service while keeping the platform accessible.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
