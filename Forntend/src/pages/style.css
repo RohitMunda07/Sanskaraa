@@ -1,0 +1,22 @@
+/* className="w-full px-4 py-2 bg-transparent border border-yellow-400 rounded-md placeholder-white text-white focus:outline-none" */
+form input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border-radius: 1rem;
+    font-size: large;
+    border: 1px solid white;
+    color: white;
+    /* width: 50%; */
+}
+
+@media (min-width: 768px) {
+    form input, button, p, .login {
+        width: 50%;
+    }  
+}
+@media (min-width: 1440px) {
+    form input, button, p, .signUp {
+        width: 35%;
+    }  
+}

@@ -1,30 +1,34 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form"
+import "../index.css"
+
 
 const Login = () => {
+  const { register, watch, handleSubmit, formState = { errors } } = useForm()
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (e) => {
+    // e.preventDefault();
     // ✅ Add validation here if needed
     navigate("/home");
   };
 
   return (
-    <div className="w-full h-screen flex items-center justify-center bg-[#fdf6e3]">
-      <div className="flex flex-col md:flex-row bg-[#5d2b1f] rounded-xl shadow-2xl overflow-hidden w-full max-w-6xl h-[90vh] mx-4 md:mx-10">
+    <div className="w-full h-[100vh] flex items-center justify-center py-10 bg-[#fdf6e3]">
+      <div className="flex flex-col md:flex-row bg-[#5d2b1f] rounded-xl shadow-2xl overflow-hidden w-full max-w-6xl  mx-4 md:mx-10">
 
         {/* Left - Form Section */}
         <div className="flex-1 p-10 md:p-16 text-white flex flex-col justify-center">
           {/* Logo and Brand */}
-          <div className="flex items-center mb-6">
-            <img src="/assets/logo-icon.png" alt="Logo" className="w-8 h-8 mr-2" />
-            <h1 className="text-3xl font-bold text-white">Sanskaraa</h1>
+          <div className="flex flex-col md:flex-row items-center justify mb-6">
+            <img src="./SanskaarLogo.png" alt="SanskaarLogo" className="w-56 h-46" />
+            <h1 className="text-5xl lg:text-7xl font-bold font-[Kalnia] text-white">Sanskaraa</h1>
           </div>
 
-          <h2 className="text-4xl font-semibold mb-6 text-white">Log In</h2>
+          <h2 className="text-4xl font-semibold mb-6 text-white font-[Kalnia]">Log In</h2>
 
-          <form className="space-y-4" onSubmit={handleSubmit}>
+          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
             <input
               type="text"
               placeholder="Phone number or email"
@@ -41,7 +45,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="w-full bg-yellow-400 text-white font-semibold py-2 rounded-md hover:bg-yellow-300 transition"
+              className="w-full bg-yellow-400 text-white font-semibold py-2 rounded-md hover:bg-yellow-300 transition font-[Kalnia]"
             >
               Log In
             </button>
@@ -52,10 +56,10 @@ const Login = () => {
           </p>
 
           {/* Mobile Images (optional) */}
-          <div className="md:hidden mt-6 flex justify-between items-end">
-            <img src="" alt="Pandit" className="h-20" />
+          <div className="md:hidden mt-6 flex flex-row justify-between items-center">
+            {/* <img src="" alt="Pandit" className="h-20" /> */}
             <img src="/assets/agni.png" alt="Agni" className="h-20" />
-            <img src="/assets/kalash.png" alt="Kalash" className="h-20" />
+            <img src="./assets/kumbh-kalash.png" alt="Kalash" className="w-16 h-16" />
           </div>
         </div>
 

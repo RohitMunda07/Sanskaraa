@@ -1,0 +1,68 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form"
+import "./style.css"
+export default function NewLogin() {
+    const { register, watch, handleSubmit, formState = { errors } } = useForm()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const onSubmit = (e) => {
+
+        navigate("/home");
+    };
+    return (
+        <section className="bg-[#fdf6e3] w-full h-[100vh] py-6 px-5">
+            <section className="bg-[#622610] h-full rounded-xl shadow-2xl px-6 relative flex flex-col items-center">
+                {/* close img */}
+                <div className="">
+                    <img src="/assets/close-circle.svg" alt="close-circle" className="w-8 h-8 absolute right-3 top-3 text-black cursor-pointer" />
+                </div>
+
+                {/* Logo and Brand */}
+                <div className="mt-32 flex flex-col md:w-full md:flex-row md:justify-around items-center mb-6">
+                    <img src="./logo-sanskaraa.png" alt="SanskaarLogo" className="w-16 h-16 md:w-28 md:h-28" />
+                    <h1 className="mt-3 text-4xl md:text-7xl font-[Kalnia] text-white">Sanskaraa</h1>
+                </div>
+
+                <h2 className="mt-4 text-3xl md:text-5xl text-white font-semibold mb-6 font-[Kalnia] login text-start w-full">Log In</h2>
+
+                <form className="space-y-4 relative bg-transparent z-1 md:flex md:flex-col md:justify-center md:items- md:w-full md:px-3 md:h-96 md:space-y-10" onSubmit={handleSubmit(onSubmit)}>
+                    <input
+                        type="text"
+                        placeholder="Number or Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+
+                    />
+                    <input
+                        type="password"
+                        placeholder="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+
+
+                    <p className="text-right text-sm text-white cursor-pointer">Forgot password?</p>
+
+                    <button
+                        type="submit"
+                        className="w-full bg-yellow-400 text-black font-semibold py-2 rounded-md hover:bg-yellow-300 transition font-[Kalnia] cursor-pointer"
+                    >
+                        Log In
+                    </button>
+
+                    <div className="flex items-center justify-center">
+                        <img src="/assets/prist.png" alt="prist" className="absolute -z-1 top-0 lg:right-0 lg:top-22 h-56 md:h-96 lg:w-[72rem] lg:h-[28rem]" />
+                    </div>
+                    <p className="mt-4 text-center text-sm text-white z-10 signUp">
+                        Don’t have an account? <span className="underline cursor-pointer text-yellow-300">Sign Up</span>
+                    </p>
+                </form>
+
+
+            </section>
+
+        </section>
+    )
+}
