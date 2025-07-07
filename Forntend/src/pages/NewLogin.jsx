@@ -1,19 +1,27 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import "./style.css"
+
 export default function NewLogin() {
-    const { register, watch, handleSubmit, formState = { errors } } = useForm()
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const { register,
+        handleSubmit,
+        reset,
+        formState: { errors, isSubmitting }
+    } = useForm({
+        mode: "onSubmit",
+        reValidateMode: "onSubmit",
 
-    const onSubmit = (e) => {
+    })
 
-        navigate("/home");
+    const onSubmit = async (data) => {
+        console.log("User Credentials: ", data);
+        await new Promise((resolve, reject) => setTimeout(resolve, 5000))
+        reset(); // This clears all fields
+        // navigate("/home");
     };
     return (
         <section className="bg-[#fdf6e3] w-full h-[100vh] py-6 px-5">
-            <section className="bg-[#622610] h-full rounded-xl shadow-2xl px-6 relative flex flex-col items-center">
+            <section className="bg-[#622610] h-full rounded-xl shadow-2xl px-6 relative flex flex-col">
                 {/* close img */}
                 <div className="">
                     <img src="/assets/close-circle.svg" alt="close-circle" className="w-8 h-8 absolute right-3 top-3 text-black cursor-pointer" />
@@ -25,31 +33,40 @@ export default function NewLogin() {
                     <h1 className="mt-3 text-4xl md:text-7xl font-[Kalnia] text-white">Sanskaraa</h1>
                 </div>
 
-                <h2 className="mt-4 text-3xl md:text-5xl text-white font-semibold mb-6 font-[Kalnia] login text-start w-full">Log In</h2>
+                <h2 className="mt-4 text-3xl md:text-5xl text-white font-semibold mb-6 font-[Kalnia] login text-center lg:max-w-2xs">Log In</h2>
 
                 <form className="space-y-4 relative bg-transparent z-1 md:flex md:flex-col md:justify-center md:items- md:w-full md:px-3 md:h-96 md:space-y-10" onSubmit={handleSubmit(onSubmit)}>
                     <input
                         type="text"
                         placeholder="Number or Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-
+                        className={errors.email ? "error-box" : ""}
+                        {...register("email", {
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}$/i,
+                                message: "invalid email address",
+                            },
+                        })}
                     />
+                    {errors.email && <p className='error-msg'>{errors.email.message}</p>}
+
                     <input
-                        type="password"
+                        type="Password"
                         placeholder="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        className={errors.password ? "error-box" : ""}
+                        {...register("password", {
+                            required: "filed can't be empty",
+                        })}
                     />
-
+                    {errors.password && <p className="error-msg">{errors.password.message}</p>}
 
                     <p className="text-right text-sm text-white cursor-pointer">Forgot password?</p>
 
                     <button
                         type="submit"
+                        disabled={isSubmitting}
                         className="w-full bg-yellow-400 text-black font-semibold py-2 rounded-md hover:bg-yellow-300 transition font-[Kalnia] cursor-pointer"
                     >
-                        Log In
+                        {isSubmitting ? "Logging in..." : "Log In"}
                     </button>
 
                     <div className="flex items-center justify-center">
