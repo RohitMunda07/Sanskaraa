@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Layout = () => {
+const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isEventDropdownOpen, setIsEventDropdownOpen] = useState(false);
 
@@ -402,4 +402,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default LandingPage;

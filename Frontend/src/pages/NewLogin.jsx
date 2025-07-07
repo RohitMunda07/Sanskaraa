@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form"
 import "./style.css"
 
 export default function NewLogin() {
+
+    const navigate = useNavigate();
+
     const { register,
         handleSubmit,
         reset,
@@ -72,7 +75,9 @@ export default function NewLogin() {
                     <div className="flex items-center justify-center">
                         <img src="/assets/prist.png" alt="prist" className="absolute -z-1 top-0 lg:right-0 lg:top-22 h-56 md:h-96 lg:w-[72rem] lg:h-[28rem]" />
                     </div>
-                    <p className="mt-4 text-center text-sm text-white z-10 signUp">
+                    <p className="mt-4 text-center text-sm text-white z-10 signUp cursor-pointer"
+                    onClick={()=>navigate('/sign-in')}
+                    >
                         Don’t have an account? <span className="underline cursor-pointer text-yellow-300">Sign Up</span>
                     </p>
                 </form>
