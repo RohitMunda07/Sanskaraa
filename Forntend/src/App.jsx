@@ -2,7 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import Layout from './components/Layout/Layout.jsx';
 import Login from './pages/Login.jsx';
-import NewLogin from './pages/NewLogin.jsx';
+import { NewLogin, Services } from './pages/index.js'
+
 
 const App = () => {
   return (
@@ -10,8 +11,9 @@ const App = () => {
       {/* <Route path="/" element={<Layout />} /> */}
       <Route path="/home" element={<Home />} />
       <Route path='/login' element={<NewLogin />} />
-      
-        {/* Add more routes here as needed */}
+      <Route path='/services' element={<Services />} />
+
+      {/* Add more routes here as needed */}
     </Routes>
   );
 };

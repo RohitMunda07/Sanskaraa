@@ -76,10 +76,7 @@ export default function NewLogin() {
                         Don’t have an account? <span className="underline cursor-pointer text-yellow-300">Sign Up</span>
                     </p>
                 </form>
-
-
             </section>
-
         </section>
     )
 }
