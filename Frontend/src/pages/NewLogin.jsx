@@ -36,9 +36,9 @@ export default function NewLogin() {
                     <h1 className="mt-3 text-4xl md:text-7xl font-[Kalnia] text-white">Sanskaraa</h1>
                 </div>
 
-                <h2 className="mt-4 text-3xl md:text-5xl text-white font-semibold mb-6 font-[Kalnia] login text-center lg:max-w-2xs">Log In</h2>
+                <h2 className="mt-4 z-20 text-3xl md:text-5xl text-white font-semibold mb-8 font-[Kalnia] login text-start lg:max-w-2xs">Log In</h2>
 
-                <form className="space-y-4 relative bg-transparent z-1 md:flex md:flex-col md:justify-center md:items- md:w-full md:px-3 md:h-96 md:space-y-10" onSubmit={handleSubmit(onSubmit)}>
+                <form className="space-y-2 relative bg-transparent z-1 md:flex md:flex-col md:justify-center md:items- md:w-full md:px-3 md:h-96 md:space-y-4" onSubmit={handleSubmit(onSubmit)}>
                     <input
                         type="text"
                         placeholder="Number or Email"
@@ -73,7 +73,7 @@ export default function NewLogin() {
                     </button>
 
                     <div className="flex items-center justify-center">
-                        <img src="/assets/prist.png" alt="prist" className="absolute -z-1 top-0 lg:right-0 lg:top-22 h-56 md:h-96 lg:w-[72rem] lg:h-[28rem]" />
+                        <img src="/assets/prist.png" alt="prist" className='absolute -z-1 -top-10 lg:right-0 min-h-56 md:h-96 lg:w-[72rem]' />
                     </div>
                     <p className="mt-4 text-center text-sm text-white z-10 signUp cursor-pointer"
                     onClick={()=>navigate('/sign-in')}
