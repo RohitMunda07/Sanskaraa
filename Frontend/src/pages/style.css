@@ -20,6 +20,16 @@ form input {
     color: white;
 }
 
+.nav_items {
+    /* hover:text-amber-200 */
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav_items:hover {
+    color: #fbdd66;
+}
+
 
 @media (min-width: 768px) {
 

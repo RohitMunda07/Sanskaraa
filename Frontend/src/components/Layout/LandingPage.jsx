@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import '../../pages/style.css'
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isEventDropdownOpen, setIsEventDropdownOpen] = useState(false);
 
@@ -13,7 +16,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="font-sans bg-gray-50">
+    <div className="scroll-smooth transition-all ease-in-out duration-700 font-sans bg-gray-50">
       {/* Custom Styles */}
       <style jsx>{`
         .hero-bg {
@@ -32,22 +35,24 @@ const LandingPage = () => {
       `}</style>
 
       {/* Navigation */}
-      <nav className="bg-amber-800 text-white sticky top-0 z-50 shadow-md">
+      <nav className="bg-[#622610] text-white sticky top-0 z-50 shadow-md">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+
+          {/* Logo */}
           <div className="flex items-center space-x-2">
-            <img 
-              src="https://placehold.co/50x50" 
-              alt="Sanskaraa logo - traditional diya with flame in orange and gold colors" 
-              className="rounded-full"
+            <img
+              src="/logo-sanskaraa.png"
+              alt="Sanskaraa logo - traditional diya with flame in orange and gold colors"
+              className="rounded-full w-25 h-20"
             />
-            <a href="#" className="text-xl font-bold">Sanskaraa</a>
+            <a href="/" className="text-5xl font-bold">Sanskaraa</a>
           </div>
-          
+
           <div className="hidden md:flex space-x-6">
-            <a href="#services" className="hover:text-amber-200">Services</a>
+            <a href="#services" className="nav_items">Services</a>
             <div className="relative">
-              <button 
-                className="hover:text-amber-200 flex items-center"
+              <button
+                className="nav_items flex items-center"
                 onClick={toggleEventDropdown}
               >
                 Events <i className="fas fa-chevron-down ml-1 text-sm"></i>
@@ -61,18 +66,16 @@ const LandingPage = () => {
                 </div>
               )}
             </div>
-            <a href="#about" className="hover:text-amber-200">About Us</a>
-            <a href="#contact" className="hover:text-amber-200">Contact</a>
+            <a href="#about" className="nav_items">About Us</a>
+            <a href="#contact" className="nav_items">Contact</a>
           </div>
-          
-          <div className="flex items-center space-x-4">
-            <button className="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded-full font-medium transition">
-              <i className="fas fa-user-plus mr-2"></i>Register
-            </button>
-            <button className="md:hidden text-white" onClick={toggleMenu}>
-              <i className="fas fa-bars text-2xl"></i>
-            </button>
-          </div>
+          <button
+            className=" bg-yellow-400 hover:bg-yellow-300 text-black font-semibold py-2 px-6 !w-fit rounded-md  transition font-[Kalnia] cursor-pointer"
+            onClick={()=>navigate('/sign-in')}
+          >
+            Sign In
+          </button>
+
         </div>
       </nav>
 
@@ -82,10 +85,10 @@ const LandingPage = () => {
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Sanskaraa</h1>
             <p className="text-xl md:text-2xl mb-8">
-              Your One-Stop Ritual & Event Partner<br/>
+              Your One-Stop Ritual & Event Partner<br />
               <span className="text-amber-300 font-semibold">"Har Karya Mein, Aapke Saath"</span>
             </p>
-            <button className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition">
+            <button className="bg-[#923615] text-xl hover:bg-[#d84915] text-white px-8 py-4 rounded-full font-semibold transition">
               Explore Services <i className="fas fa-arrow-right ml-2"></i>
             </button>
           </div>
@@ -147,9 +150,9 @@ const LandingPage = () => {
             {/* Decoration */}
             <div className="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
               <div className="h-48 overflow-hidden">
-                <img 
-                  src="https://placehold.co/600x400" 
-                  alt="Beautiful wedding mandap decoration with flowers and drapes in traditional red and gold colors" 
+                <img
+                  src="https://placehold.co/600x400"
+                  alt="Beautiful wedding mandap decoration with flowers and drapes in traditional red and gold colors"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -170,9 +173,9 @@ const LandingPage = () => {
             {/* Catering */}
             <div className="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
               <div className="h-48 overflow-hidden">
-                <img 
-                  src="https://placehold.co/600x400" 
-                  alt="Traditional vegetarian thali with metal plates containing various Indian dishes served at events" 
+                <img
+                  src="https://placehold.co/600x400"
+                  alt="Traditional vegetarian thali with metal plates containing various Indian dishes served at events"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -193,9 +196,9 @@ const LandingPage = () => {
             {/* Pandit Booking */}
             <div className="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
               <div className="h-48 overflow-hidden">
-                <img 
-                  src="https://placehold.co/600x400" 
-                  alt="Vedic priest conducting a Hindu ceremony with fire pit, flowers and ritual items" 
+                <img
+                  src="https://placehold.co/600x400"
+                  alt="Vedic priest conducting a Hindu ceremony with fire pit, flowers and ritual items"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -216,9 +219,9 @@ const LandingPage = () => {
             {/* Puja Samagri */}
             <div className="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
               <div className="h-48 overflow-hidden">
-                <img 
-                  src="https://placehold.co/600x400" 
-                  alt="Collection of various Hindu puja items arranged beautifully - incense, flowers, diyas, holy threads and other ritual materials" 
+                <img
+                  src="https://placehold.co/600x400"
+                  alt="Collection of various Hindu puja items arranged beautifully - incense, flowers, diyas, holy threads and other ritual materials"
                   className="w-full h-full object-cover"
                 />
               </div>
