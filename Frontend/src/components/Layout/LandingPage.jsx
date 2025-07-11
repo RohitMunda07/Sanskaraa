@@ -15,8 +15,6 @@ const LandingPage = () => {
 
   };
 
-
-
   const toggleEventDropdown = () => {
     setIsEventDropdownOpen(!isEventDropdownOpen);
   };
@@ -101,7 +99,9 @@ const LandingPage = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className={`absolute w-full h-[70vh] bg-amber-50/70 backdrop-blur-sm 
+      <section 
+      
+      className={`fixed w-full h-[70vh] bg-amber-50/70 backdrop-blur-sm 
        transition-all duration-500 ease-in-out
         ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}
         `}>
