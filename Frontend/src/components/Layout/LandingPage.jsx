@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import '../../pages/style.css'
 import { useNavigate } from 'react-router-dom';
+import { Menu, UserRound, ArrowLeftFromLine } from 'lucide-react';
+import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
+import '../../pages/style.css'
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -9,22 +11,30 @@ const LandingPage = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    console.log(isMenuOpen);
+
   };
+
+
 
   const toggleEventDropdown = () => {
     setIsEventDropdownOpen(!isEventDropdownOpen);
   };
 
   return (
-    <div className="scroll-smooth transition-all ease-in-out duration-700 font-sans bg-gray-50">
+    <div className="scroll-smooth transition-all ease-in-out duration-700 font-sans ">
       {/* Custom Styles */}
       <style jsx>{`
         .hero-bg {
-          background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                      url('https://placehold.co/1920x1080') no-repeat center center;
-          background-size: cover;
-          height: 70vh;
-        }
+                background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+                url('/assets/banner-image-1-updated.png') no-repeat top left;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: top left;
+                height: 70vh;
+                width: 100%;
+              }
+
         .service-card:hover {
           transform: translateY(-10px);
           box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -35,20 +45,29 @@ const LandingPage = () => {
       `}</style>
 
       {/* Navigation */}
-      <nav className="bg-[#622610] text-white sticky top-0 z-50 shadow-md">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      <nav className="bg-[#973c00] text-white sticky top-0 z-50 shadow-md">
+        <div className="container mx-auto px-4 py-3 flex justify-around items-center">
+          {isMenuOpen ?
+            <ArrowLeftFromLine className='lg:hidden cursor-pointer'
+              onClick={toggleMenu} /> :
+            <Menu
+              className='lg:hidden cursor-pointer'
+              onClick={toggleMenu}
+            />
+          }
 
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img
               src="/logo-sanskaraa.png"
               alt="Sanskaraa logo - traditional diya with flame in orange and gold colors"
-              className="rounded-full w-25 h-20"
+              className="rounded-full w-10 h-10 md:w-14 md:h-14 lg:w-25 lg:h-20"
             />
-            <a href="/" className="text-5xl font-bold">Sanskaraa</a>
+            <a href="/" className="text-2xl md:text-3xl lg:text-5xl font-bold">Sanskaraa</a>
           </div>
 
-          <div className="hidden md:flex space-x-6">
+          {/* nav-items */}
+          <div className="hidden lg:flex space-x-6">
             <a href="#services" className="nav_items">Services</a>
             <div className="relative">
               <button
@@ -69,31 +88,76 @@ const LandingPage = () => {
             <a href="#about" className="nav_items">About Us</a>
             <a href="#contact" className="nav_items">Contact</a>
           </div>
+
           <button
-            className=" bg-yellow-400 hover:bg-yellow-300 text-black font-semibold py-2 px-6 !w-fit rounded-md  transition font-[Kalnia] cursor-pointer"
-            onClick={()=>navigate('/sign-in')}
+            className="flex gap-x-4 bg-yellow-400 hover:bg-yellow-300 text-black font-semibold py-2 px-6 !w-fit rounded-md  transition font-[Kalnia] cursor-pointer"
+            onClick={() => navigate('/sign-in')}
           >
-            Sign In
+            <span><UserRound /></span>
+            <span className='hidden md:block'>Sign In</span>
           </button>
 
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="hero-bg flex items-center justify-center text-center text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Sanskaraa</h1>
-            <p className="text-xl md:text-2xl mb-8">
-              Your One-Stop Ritual & Event Partner<br />
-              <span className="text-amber-300 font-semibold">"Har Karya Mein, Aapke Saath"</span>
-            </p>
-            <button className="bg-[#923615] text-xl hover:bg-[#d84915] text-white px-8 py-4 rounded-full font-semibold transition">
-              Explore Services <i className="fas fa-arrow-right ml-2"></i>
-            </button>
+      <section className={`absolute w-full h-[70vh] bg-amber-50/70 backdrop-blur-sm 
+       transition-all duration-500 ease-in-out
+        ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+        `}>
+
+        {/* left-nav-items from small screen*/}
+        <ul className="space-y-8 p-10">
+          <li>
+            <a href="#services" className="menu_nav_items">Services</a>
+          </li>
+          <div className="relative">
+            <ul
+              className="menu_nav_items text-start cursor-pointer"
+              onClick={toggleEventDropdown}
+            >
+              <span className=''>Events</span>
+              <span>{isEventDropdownOpen ? <RiArrowDropUpLine fontSize={35} className='inline' /> :
+                <RiArrowDropDownLine fontSize={35} className='inline' />}</span>
+            </ul>
+
+            {isEventDropdownOpen && (
+              <ul className={`relative left-5 text-gray-800 text-xl mt-2 py-2 rounded shadow-lg w-48
+              transition-all ease-in-out duration-500
+              ${isEventDropdownOpen ? 'h-fit' : 'h-0'}
+              `}>
+                <li>
+                  <a href="#" className="block px-4 py-2 hover:bg-amber-50">Weddings</a>
+                </li>
+                <li>
+                  <a href="#" className="block px-4 py-2 hover:bg-amber-50">Griha Pravesh</a>
+                </li>
+                <li>
+                  <a href="#" className="block px-4 py-2 hover:bg-amber-50">Pooja Ceremonies</a>
+                </li>
+                <li>
+                  <a href="#" className="block px-4 py-2 hover:bg-amber-50">Satyanarayan Katha</a>
+                </li>
+              </ul>
+            )}
           </div>
-        </div>
+          <a href="#about" className="menu_nav_items">About Us</a>
+          <a href="#contact" className="menu_nav_items">Contact</a>
+        </ul>
       </section>
+
+      {/* banner image */}
+      <section className="">
+        <img src="/assets/banner_image_upscale.png" alt="" className='w-full lg:h-[90vh]' />
+      </section>
+
+      {/* Explore Services btn */}
+      <div className='flex items-center justify-center'>
+        <button className="bg-[#973c00] md:text-xl mt-5 w-[12rem] md:!w-2xs hover:bg-[#d84915] text-white px-8 py-4 rounded-full font-semibold transition">
+          Explore Services <i className="fas fa-arrow-right ml-2"></i>
+        </button>
+      </div>
+
 
       {/* Problem Section */}
       <section className="py-16 bg-white">

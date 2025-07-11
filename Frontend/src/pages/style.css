@@ -30,6 +30,18 @@ form input {
     color: #fbdd66;
 }
 
+.menu_nav_items {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: block;
+}
+
+animate slideIn{
+    @keyframes 0% {
+        
+    }
+}
+
 
 @media (min-width: 768px) {
 
