@@ -73,7 +73,7 @@ export default function SignIn() {
                     />
                     {errors.password && <p className="error-msg">{errors.password.message}</p>}
 
-                    <p className="text-right text-sm text-white cursor-pointer">Forgot password?</p>
+                    <p className=" loginPara text-right text-sm text-white cursor-pointer">Forgot password?</p>
 
                     <button
                         type="submit"
@@ -86,7 +86,7 @@ export default function SignIn() {
                     <div className="flex items-center justify-center">
                         <img src="/assets/prist.png" alt="prist" className="absolute -z-1 -top-10 lg:right-0 min-h-56 md:h-96 lg:w-[72rem]" />
                     </div>
-                    <p className="mt-4 text-center text-sm text-white z-10 signUp"
+                    <p className="text-end text-sm text-white z-10 loginPara"
                         onClick={()=>navigate('/login')}
                     >
                         Already have an account? <span className="underline cursor-pointer text-yellow-300">Log In</span>

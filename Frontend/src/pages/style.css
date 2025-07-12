@@ -1,4 +1,8 @@
 /* className="w-full px-4 py-2 bg-transparent border border-yellow-400 rounded-md placeholder-white text-white focus:outline-none" */
+html {
+    scroll-behavior: smooth;
+}
+
 form input {
     width: 100%;
     padding: 0.5rem 1rem;
@@ -36,10 +40,11 @@ form input {
     display: block;
 }
 
-animate slideIn{
-    @keyframes 0% {
-        
-    }
+:hover.scale-image {
+    scale: 110%;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    transition-duration: 1000ms;
 }
 
 
@@ -47,18 +52,17 @@ animate slideIn{
 
     form input,
     button,
-    p,
+    .loginPara,
     .login {
         width: 50%;
     }
 }
 
-@media (min-width: 1440px) {
+@media ((max-width: 768px) and (min-width: 1440px)) {
 
     form input,
     button,
-    p,
     .signUp {
-        width: 35%;
+        width: 50%;
     }
 }
