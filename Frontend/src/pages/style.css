@@ -28,6 +28,7 @@ form input {
     /* hover:text-amber-200 */
     font-size: 1.5rem;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .nav_items:hover {
@@ -38,6 +39,7 @@ form input {
     font-size: 1.5rem;
     font-weight: 600;
     display: block;
+    cursor: pointer;
 }
 
 :hover.scale-image {

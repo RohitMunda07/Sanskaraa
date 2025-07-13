@@ -1,4 +1,4 @@
-1. implement single page routing
+✅ 1. implement single page routing
 2. auto close menu and dropdown when clicked outside the window
 3. close the menu for smaller screen when user switches the screen
 4. add toast for login and short messages

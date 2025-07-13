@@ -1,0 +1,8 @@
+.footer-nav-list {
+    cursor: pointer;
+
+}
+
+.footer-nav-list:hover {
+    color: #fbdd66;
+}

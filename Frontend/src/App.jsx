@@ -1,20 +1,21 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Home from './pages/Home.jsx';
-import { NewLogin, LandingPage, SignIn, Services } from './pages/index.js'
+import { NewLogin, LandingPage, SignIn, Services, Layout } from './pages/index.js'
 
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/home" element={<Home />} />
-      <Route path='/login' element={<NewLogin />} />
-      <Route path="/services" element={<Services />} />
-      <Route path='/sign-in' element={<SignIn />} />
-
-      {/* Add more routes here as needed */}
+      <Route path="/" element={<Layout />}>
+        <Route index element={<LandingPage />} />
+        <Route path="home" element={<Home />} />
+        <Route path="login" element={<NewLogin />} />
+        <Route path="services" element={<Services />} />
+        <Route path="sign-in" element={<SignIn />} />
+      </Route>
     </Routes>
   );
 };
+
 
 export default App;
