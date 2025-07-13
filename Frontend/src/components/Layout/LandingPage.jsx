@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, UserRound, ArrowLeftFromLine } from 'lucide-react';
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import TopButton from '../common/TopButton';
@@ -7,14 +7,11 @@ import '../../pages/style.css'
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const servicesRef = useRef(null); // 👈 attach this to the section
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isEventDropdownOpen, setIsEventDropdownOpen] = useState(false);
-
-  const scrollToSection = (id, urlPath) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    window.history.pushState(null, "", urlPath);
-  };
-
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -25,6 +22,17 @@ const LandingPage = () => {
   const toggleEventDropdown = () => {
     setIsEventDropdownOpen(!isEventDropdownOpen);
   };
+
+  useEffect(() => {
+    const scrollTo = location.state?.scrollTo;
+
+    if (scrollTo === 'services-section' && servicesRef.current) { // servicesRef.current -> points to the service-section
+      servicesRef.current.scrollIntoView({ behavior: 'smooth' });
+
+      // Clear the state to avoid auto-scroll on refresh
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate]);
 
   return (
     <div className="scroll-smooth transition-all ease-in-out duration-700 font-sans ">
@@ -75,8 +83,10 @@ const LandingPage = () => {
           {/* nav-items for larger screen*/}
           <div className="hidden lg:flex space-x-6">
             <a
-              onClick={() => scrollToSection('services', '/services')}
-              className="nav_items">Services</a>
+              onClick={() => navigate('/', { state: { scrollTo: 'services-section' } })}
+              className="nav_items">Services
+            </a>
+
             <div className="relative">
               <button
                 className="nav_items flex items-center"
@@ -86,6 +96,7 @@ const LandingPage = () => {
                 <span>{isEventDropdownOpen ? <RiArrowDropUpLine fontSize={35} className='inline' /> :
                   <RiArrowDropDownLine fontSize={35} className='inline' />}</span>
               </button>
+
               {/* larger screen drop-down */}
               {isEventDropdownOpen && (
                 <div className="absolute bg-[#973c00] text-white text-lg mt-2 py-2 rounded shadow-lg w-48">
@@ -97,10 +108,8 @@ const LandingPage = () => {
               )}
             </div>
             <a
-              onClick={() => scrollToSection('about-us', '/about-us')}
               className="nav_items">About Us</a>
             <a
-              onClick={() => scrollToSection('contact-us', '/contact-us')}
               className="nav_items">Contact</a>
           </div>
 
@@ -211,7 +220,7 @@ const LandingPage = () => {
       </section>
 
       {/* Services Section */}
-      <section id='services' className="py-16 bg-amber-50">
+      <section ref={servicesRef} id='services-section' className="py-16 bg-amber-50">
         <div className="container mx-auto px-4 flex flex-col">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Comprehensive Services</h2>
