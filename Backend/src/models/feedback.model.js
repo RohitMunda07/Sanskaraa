@@ -18,7 +18,11 @@ const feedbackSchema = new Schema(
         },
         subject: {
             type: Schema.Types.ObjectId,
-            ref: "Vendor" || "Caterer" || "Media" || "Pandit"
+            refPath: "subjectType" 
+        },
+        subjectType: {
+            type: String,
+            enum: ['Decorator', 'Vendor', 'Caterer', 'Media', 'Pandit']
         }
     },
     {
