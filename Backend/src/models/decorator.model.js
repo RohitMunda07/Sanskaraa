@@ -1,9 +1,18 @@
 import mongoose, { Schema } from "mongoose";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
+import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
-const userSchema = new Schema(
+const decoratorSchema = new Schema(
     {
+        username: {
+            type: String,
+            required: [true, "Username is required"],
+            unique: true,
+            index: true,
+            trim: true,
+            lowercase: true
+        },
         fullname: {
             type: String,
             required: [true, 'Fullname is required'],
@@ -49,48 +58,59 @@ const userSchema = new Schema(
         refreshToken: {
             type: String
         },
-        orderHistory: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Order"
-            }
-        ],
         eventHistory: [
             { 
                 type: Schema.Types.ObjectId,
                 ref: "Event"
             }
         ],
+        coverImage: {
+            type: String
+        },
         feedbackHistory: [
             {
                 type: Schema.Types.ObjectId,
                 ref: "Feedback"
             }
-        ]
+        ],
+        speciality: {
+            type: String
+        },
+        isVerified: {
+            type: Boolean,
+            default: false,
+            index: true
+        },
+        bio: {
+            type: String,
+            minLength: 10,
+            maxLength: 200
+        }
     },
     {
         timestamps: true
     }
 )
 
-userSchema.pre("save", async function (next) {
+decoratorSchema.pre("save", async function (next) {
     if (!this.isModified("password")) {
         return next()
-    } 
+    }
 
     this.password = bcrypt.hash(this.password, 10)
     next()
 })
 
-userSchema.methods.isPasswordCorrect = async function (password) {
+decoratorSchema.methods.isPasswordCorrect = async function (password) {
     return await bcrypt.compare(password, this.password)
 }
 
-userSchema.methods.generateAccessToken = function(){
+decoratorSchema.methods.generateAccessToken = function() {
     return jwt.sign(
         {
             _id: this._id,
             email: this.email,
+            username: this.username,
             fullname: this.fullname
         },
         process.env.ACCESS_TOKEN_SECRET,
@@ -100,7 +120,7 @@ userSchema.methods.generateAccessToken = function(){
     )
 }
 
-userSchema.methods.generateRefreshToken = function(){
+decoratorSchema.methods.generateRefreshToken = function() {
     return jwt.sign(
         {
             _id: this._id
@@ -112,4 +132,4 @@ userSchema.methods.generateRefreshToken = function(){
     )
 }
 
-export const User = mongoose.model("User", userSchema)
+export const Decorator = mongoose.model("Decorator", decoratorSchema)
