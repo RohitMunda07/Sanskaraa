@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
-const decoratorSchema = new Schema(
+const panditSchema = new Schema(
     {
         username: {
             type: String,
@@ -28,11 +28,6 @@ const decoratorSchema = new Schema(
         password: {
             type: String,
             required: [true, 'Password is required'],
-            trim: true
-        },
-        address: {
-            type: String,
-            required: [true, 'Address is required'],
             trim: true
         },
         phoneNumber: {
@@ -73,8 +68,8 @@ const decoratorSchema = new Schema(
                 ref: "Feedback"
             }
         ],
-        speciality: {
-            type: String
+        languages: {
+            type: Array
         },
         isVerified: {
             type: Boolean,
@@ -92,24 +87,24 @@ const decoratorSchema = new Schema(
     }
 )
 
-decoratorSchema.pre("save", async function (next) {
+panditSchema.pre("save", async function (next) {
     if (!this.isModified("password")) {
         return next()
-    }
+    }    
 
     this.password = bcrypt.hash(this.password, 10)
-    next()
+        next()
 })
 
-decoratorSchema.methods.isPasswordCorrect = async function (password) {
+panditSchema.methods.isPasswordCorrect = async function(password) {
     return await bcrypt.compare(password, this.password)
 }
 
-decoratorSchema.methods.generateAccessToken = function() {
+panditSchema.methods.generateAccessToken = function() {
     return jwt.sign(
         {
             _id: this._id,
-            email: this.email,
+            password: this.password,
             username: this.username,
             fullname: this.fullname
         },
@@ -120,7 +115,7 @@ decoratorSchema.methods.generateAccessToken = function() {
     )
 }
 
-decoratorSchema.methods.generateRefreshToken = function() {
+panditSchema.methods.generateRefreshToken = function() {
     return jwt.sign(
         {
             _id: this._id
@@ -129,9 +124,9 @@ decoratorSchema.methods.generateRefreshToken = function() {
         {
             expiresIn: process.env.REFRESH_TOKEN_EXPIRY
         }
-    )
+    )    
 }
 
-decoratorSchema.plugin(mongooseAggregatePaginate)
+panditSchema.plugin(mongooseAggregatePaginate)
 
-export const Decorator = mongoose.model("Decorator", decoratorSchema)
+export const Pandit = mongoose.model("Pandit", panditSchema)

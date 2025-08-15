@@ -132,4 +132,6 @@ catererSchema.methods.generateRefreshToken = function() {
     )
 }
 
+catererSchema.plugin(mongooseAggregatePaginate)
+
 export const Caterer = mongoose.model("Caterer", catererSchema)

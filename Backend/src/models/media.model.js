@@ -132,4 +132,6 @@ mediaSchema.methods.generateRefreshToken = async function (password) {
     )
 }
 
+mediaSchema.plugin(mongooseAggregatePaginate)
+
 export const Media = mongoose.model("Media", mediaSchema)
