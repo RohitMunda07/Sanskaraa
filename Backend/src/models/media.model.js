@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
-const catererSchema = new Schema(
+const mediaSchema = new Schema(
     {
         username: {
             type: String,
@@ -73,7 +73,7 @@ const catererSchema = new Schema(
                 ref: "Feedback"
             }
         ],
-        speciality: {
+        specs: {
             type: Array
         },
         isVerified: {
@@ -92,7 +92,7 @@ const catererSchema = new Schema(
     }
 )
 
-catererSchema.pre("save", async function (next) {
+mediaSchema.pre("save", async function (next) {
     if (!this.isModified("password")) {
         return next()
     }
@@ -101,14 +101,14 @@ catererSchema.pre("save", async function (next) {
         next()
 })
 
-catererSchema.methods.isPasswordCorrect = async function (password) {
+mediaSchema.method.isPasswordCorrect = async function (password) {
     return await bcrypt.compare(password, this.password)
 }
 
-catererSchema.methods.generateAccessToken = function() {
+mediaSchema.methods.generateAccessToken = function() {
     return jwt.sign(
         {
-            _id: this._id,
+            _id: this.id,
             password: this.password,
             username: this.username,
             fullname: this.fullname
@@ -120,7 +120,7 @@ catererSchema.methods.generateAccessToken = function() {
     )
 }
 
-catererSchema.methods.generateRefreshToken = function() {
+mediaSchema.methods.generateRefreshToken = async function (password) {
     return jwt.sign(
         {
             _id: this._id
@@ -132,4 +132,4 @@ catererSchema.methods.generateRefreshToken = function() {
     )
 }
 
-export const Caterer = mongoose.model("Caterer", catererSchema)
+export const Media = mongoose.model("Media", mediaSchema)
