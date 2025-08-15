@@ -130,4 +130,6 @@ vendorSchema.methods.generateRefreshToken = function() {
     )
 }
 
+vendorSchema.plugin(mongooseAggregatePaginate)
+
 export const Vendor = mongoose.model("Vendor", vendorSchema)
