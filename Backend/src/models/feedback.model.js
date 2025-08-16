@@ -12,18 +12,24 @@ const feedbackSchema = new Schema(
             minLength: 1,
             maxLength: 5
         },
-        owner: {
-            type: Schema.Types.ObjectId,
-            ref: "User"
-        },
-        subject: {
-            type: Schema.Types.ObjectId,
-            refPath: "subjectType" 
-        },
-        subjectType: {
-            type: String,
-            enum: ['Decorator', 'Vendor', 'Caterer', 'Media', 'Pandit']
-        }
+        owner: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "User"
+            }
+        ],
+        subject: [
+            {
+                type: Schema.Types.ObjectId,
+                refPath: "subjectType" 
+            }
+        ],
+        subjectType: [
+            {
+                type: String,
+                enum: ['Decorator', 'Vendor', 'Caterer', 'Media', 'Pandit']
+            }
+        ]
     },
     {
         timestamps: true
