@@ -5,11 +5,11 @@ const videoSchema = new Schema(
     {
         videoFile: {
             type: String,
-            required: true
+            required: [true, 'VideoFile is required']
         },
         duration: {
             type: Number,
-            required: true
+            required: [true, 'Duration is required']
         },
         title: {
             type: String,

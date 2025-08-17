@@ -5,7 +5,7 @@ const photoSchema = new Schema(
     {
         photoFile: {
             type: String,
-            required: true
+            required: [true, 'PhotoFile is required']
         },
         title: {
             type: String,

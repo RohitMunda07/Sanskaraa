@@ -5,7 +5,7 @@ const feedbackSchema = new Schema(
     {
         content: {
             type: String,
-            required: true
+            required: [true, 'Content is required']
         },
         rating: {
             type: Number,
