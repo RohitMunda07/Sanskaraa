@@ -14,6 +14,8 @@ const orderSchema = new Schema(
         },
         content: {
             type: String,
+            trim: true,
+            minLength: 1,
             maxLength: 500
         },
         items: {
