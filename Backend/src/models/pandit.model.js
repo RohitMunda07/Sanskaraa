@@ -7,7 +7,7 @@ const panditSchema = new Schema(
     {
         username: {
             type: String,
-            required: [true, "Username is required"],
+            required: [true, 'Username is required'],
             unique: true,
             index: true,
             trim: true,
@@ -69,7 +69,8 @@ const panditSchema = new Schema(
             }
         ],
         languages: {
-            type: Array
+            type: Array,
+            required: [true, 'Language is required']
         },
         isVerified: {
             type: Boolean,

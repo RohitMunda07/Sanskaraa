@@ -5,7 +5,7 @@ const commentSchema = new Schema(
     {
         content: {
             type: String,
-            required: true,
+            required: [true, 'Content is required'],
             minLength: 10,
             maxLength: 200
         },
