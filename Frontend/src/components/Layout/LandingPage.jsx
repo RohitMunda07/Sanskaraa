@@ -101,7 +101,7 @@ const LandingPage = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Decoration */}
+            {/* Event org*/}
             <div className="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 group ">
               <div className="h-48 overflow-hidden ">
                 <img
@@ -111,9 +111,9 @@ const LandingPage = () => {
                 />
               </div>
               <div className="p-6 min-w-full">
-                <h3 className="text-2xl font-semibold mb-2">Event Decoration</h3>
+                <h3 className="text-2xl font-semibold mb-2">Event Orgniser</h3>
                 <p className="text-lg text-start text-gray-600">
-                  Stunning mandaps, floral arrangements, lighting and theme-based decor for all ceremonies.
+                  Saddi, Grih prewesh, etc
                 </p>
                 <a href="#" className=" text-amber-600 font-medium">
                   View Options <i className="fas fa-chevron-right ml-1 text-sm"></i>
@@ -121,7 +121,7 @@ const LandingPage = () => {
               </div>
             </div>
 
-            {/* Catering */}
+            {/* services organiser*/}
             <div className="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 group ">
               <div className="h-48 overflow-hidden ">
                 <img
@@ -131,9 +131,9 @@ const LandingPage = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-semibold mb-2">Catering Services</h3>
+                <h3 className="text-2xl font-semibold mb-2">services </h3>
                 <p className="text-lg text-gray-600 mb-4">
-                  Authentic satvik food, thali options and menu customization for all event sizes.
+                  Decoration, Lighthing, Catering, Camera Man 
                 </p>
                 <a href="#" className="text-amber-600 font-medium inline-flex items-center">
                   View Options <i className="fas fa-chevron-right ml-1 text-sm"></i>
