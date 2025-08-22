@@ -28,7 +28,8 @@ const userSchema = new Schema(
         },
         phoneNumber: {
             type: Number,
-            required: true,
+            required: [true, 'Phone Number is required'],
+            unique: true,
             validate: {
                 validator: function(v) {
                     return /^[6-9]\d{9}$/.test(v)
@@ -78,7 +79,7 @@ userSchema.pre("save", async function (next) {
         return next()
     } 
 
-    this.password = bcrypt.hash(this.password, 10)
+    this.password = await bcrypt.hash(this.password, 10)
     next()
 })
 
