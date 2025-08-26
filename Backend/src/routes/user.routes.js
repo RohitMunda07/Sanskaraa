@@ -2,7 +2,8 @@ import {
     registerUser,
     loginUser,
     logoutUser,
-    refreshAccessToken
+    refreshAccessToken,
+    changeCurrentPassword
  } from "../controllers/user.controller.js"
 import { Router } from 'express'
 import { upload } from "../middlewares/multer.middleware.js"
@@ -29,8 +30,13 @@ router.route("/logout").post(
     logoutUser
 )
 
-router.route("/refreshToken").get(
+router.route("/refresh-token").get(
     refreshAccessToken
+)
+
+router.route("/change-password").post(
+    verifyJWT,
+    changeCurrentPassword
 )
 
 export default router
