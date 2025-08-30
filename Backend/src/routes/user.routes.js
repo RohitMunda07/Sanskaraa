@@ -5,7 +5,8 @@ import {
     refreshAccessToken,
     changeCurrentPassword,
     getCurrentUser,
-    updateAccount
+    updateAccount,
+    updateAvatar
  } from "../controllers/user.controller.js"
 import { Router } from 'express'
 import { upload } from "../middlewares/multer.middleware.js"
@@ -49,6 +50,12 @@ router.route("/current-user").get(
 router.route("/update-account").post(
     verifyJWT,
     updateAccount
+)
+
+router.route("/update-avatar").post(
+    verifyJWT,
+    upload.single("avatar"),
+    updateAvatar
 )
 
 export default router
