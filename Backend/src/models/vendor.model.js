@@ -47,7 +47,7 @@ const vendorSchema = new Schema(
             }
         },
         pinCode: {
-            type: Number,
+            type: String,
             required: [true, 'Pin Code is required'],
             minLength: 6,
             maxLength: 6,
@@ -59,21 +59,9 @@ const vendorSchema = new Schema(
         refreshToken: {
             type: String
         },
-        orderHistory: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Order"
-            }
-        ],
         coverImage: {
             type: String
         },
-        feedbackHistory: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Feedback"
-            }
-        ],
         isVerified: {
             type: Boolean,
             default: false,
@@ -83,7 +71,19 @@ const vendorSchema = new Schema(
             type: String,
             minLength: 10,
             maxLength: 200
-        }
+        },
+        orderHistory: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Order"
+            }
+        ],
+        feedbackHistory: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Feedback"
+            }
+        ]
     },
     {
         timestamps: true
@@ -114,7 +114,7 @@ vendorSchema.methods.generateAccessToken = function() {
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn: ACCESS_TOKEN_EXPIRY
+            expiresIn: process.env.ACCESS_TOKEN_EXPIRY
         }
     )
 }

@@ -36,7 +36,7 @@ const catererSchema = new Schema(
             trim: true
         },
         phoneNumber: {
-            type: Number,
+            type: String,
             required: true,
             unique: true,
             validate: {
@@ -47,7 +47,7 @@ const catererSchema = new Schema(
             }
         },
         pinCode: {
-            type: Number,
+            type: String,
             required: [true, 'Pin Code is required'],
             minLength: 6,
             maxLength: 6,
@@ -59,21 +59,9 @@ const catererSchema = new Schema(
         refreshToken: {
             type: String
         },
-        eventHistory: [
-            { 
-                type: Schema.Types.ObjectId,
-                ref: "Event"
-            }
-        ],
         coverImage: {
             type: String
         },
-        feedbackHistory: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Feedback"
-            }
-        ],
         speciality: {
             type: Array
         },
@@ -86,7 +74,19 @@ const catererSchema = new Schema(
             type: String,
             minLength: 10,
             maxLength: 200
-        }
+        },
+        eventHistory: [
+            { 
+                type: Schema.Types.ObjectId,
+                ref: "Event"
+            }
+        ],
+        feedbackHistory: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Feedback"
+            }
+        ]
     },
     {
         timestamps: true
