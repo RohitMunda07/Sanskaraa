@@ -31,7 +31,7 @@ const panditSchema = new Schema(
             trim: true
         },
         phoneNumber: {
-            type: Number,
+            type: String,
             required: true,
             unique: true,
             validate: {
@@ -42,7 +42,7 @@ const panditSchema = new Schema(
             }
         },
         pinCode: {
-            type: Number,
+            type: String,
             required: [true, 'Pin Code is required'],
             minLength: 6,
             maxLength: 6,
@@ -54,21 +54,9 @@ const panditSchema = new Schema(
         refreshToken: {
             type: String
         },
-        eventHistory: [
-            { 
-                type: Schema.Types.ObjectId,
-                ref: "Event"
-            }
-        ],
         coverImage: {
             type: String
         },
-        feedbackHistory: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Feedback"
-            }
-        ],
         languages: {
             type: Array,
             required: [true, 'Language is required']
@@ -82,7 +70,19 @@ const panditSchema = new Schema(
             type: String,
             minLength: 10,
             maxLength: 200
-        }
+        },
+        eventHistory: [
+            { 
+                type: Schema.Types.ObjectId,
+                ref: "Event"
+            }
+        ],
+        feedbackHistory: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Feedback"
+            }
+        ]
     },
     {
         timestamps: true

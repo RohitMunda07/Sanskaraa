@@ -38,7 +38,7 @@ const userSchema = new Schema(
             }
         },
         pinCode: {
-            type: Number,
+            type: String,
             required: [true, 'Pin Code is required'],
             minLength: 6,
             maxLength: 6,

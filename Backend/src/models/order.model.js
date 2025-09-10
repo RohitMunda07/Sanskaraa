@@ -22,6 +22,16 @@ const orderSchema = new Schema(
             type: Array,
             required: [true, 'Items are required']
         },
+        status: {
+            type: String,
+            enum: ['pending', 'confirmed', 'completed', 'cancelled'],
+            required: [true, 'Status is required']
+        },
+        paymentStatus: {
+            type: String,
+            enum: ['pending', 'paid', 'refunded'],
+            required: [true, 'Payment Status is required']
+        },
         photoFile: [
             {
                 type: Schema.Types.ObjectId,
