@@ -4,7 +4,7 @@ import { ApiResponse } from "../utils/apiResponse.js"
 import { User } from "../models/user.model.js"
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import jwt from "jsonwebtoken"
-import { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
 const generateAccessAndRefreshToken = async (userId) => {
     try {
@@ -300,6 +300,57 @@ const updateAvatar = asyncHandler( async (req, res) => {
     )
 })
 
+const getOrderHistory = asyncHandler( async (req, res) => {
+    const user = await User.aggregate([
+        {
+            $match: {
+                _id: new mongoose.Types.ObjectId(req.user._id)
+            }
+        },
+        {
+            $lookup: {
+                from: "orders",
+                localField: "orderHistory",
+                foreignField: "_id",
+                as: "orderHistory",
+                pipeline: [
+                    {
+                        $lookup: {
+                            from: "photos",
+                            localField: "photoFile",
+                            foreignField: "_id",
+                            as: "photoFile",
+                            pipeline: [
+                                {
+                                    $project: {
+                                        photoFile: 1,
+                                        title: 1
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        $addFields: {
+                            photoFile: {
+                                $first: "$photoFile"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ])
+
+    return res
+    .status(200)
+    .json(new ApiResponse(
+        200,
+        user[0].orderHistory,
+        "Order History fetched successfully"
+    ))
+})
+
 export {
     registerUser,
     loginUser,
@@ -308,5 +359,6 @@ export {
     changeCurrentPassword,
     getCurrentUser,
     updateAccount,
-    updateAvatar
+    updateAvatar,
+    getOrderHistory
 }  
