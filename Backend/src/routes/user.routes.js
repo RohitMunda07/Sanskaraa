@@ -6,7 +6,8 @@ import {
     changeCurrentPassword,
     getCurrentUser,
     updateAccount,
-    updateAvatar
+    updateAvatar,
+    getOrderHistory
  } from "../controllers/user.controller.js"
 import { Router } from 'express'
 import { upload } from "../middlewares/multer.middleware.js"
@@ -56,6 +57,11 @@ router.route("/update-avatar").patch(
     verifyJWT,
     upload.single("avatar"),
     updateAvatar
+)
+
+router.route("/history").get(
+    verifyJWT,
+    getOrderHistory
 )
 
 export default router
