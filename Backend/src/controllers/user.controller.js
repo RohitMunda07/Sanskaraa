@@ -46,11 +46,12 @@ const registerUser = asyncHandler( async(req, res) => {
     if (req.files &&
         req.files.avatar &&
         Array.isArray(req.files.avatar) && 
-        req.files.avatar.length > 0){
-            avatarLocalPath = req.files.avatar[0].path;
-        } else {
-            throw new ApiError(400, "Avatar files is required with its path")
-        }
+        req.files.avatar.length > 0
+    ){
+        avatarLocalPath = req.files.avatar[0].path;
+    } else {
+        throw new ApiError(400, "Avatar file is required with its path")
+    }
 
     const avatar = await uploadOnCloudinary(avatarLocalPath)
 
