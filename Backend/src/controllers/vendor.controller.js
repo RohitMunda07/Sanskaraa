@@ -6,6 +6,23 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import jwt from "jsonwebtoken"
 import mongoose from "mongoose"
 
+const generateAccessAndRefreshToken = async (vendorId) => {
+    try {
+        const vendor = await Vendor.findById(vendorId)
+        
+        const accessToken = vendor.generateAccessToken()
+        const refreshToken = vendor.generateRefreshToken()
+
+        vendor.refreshToken = refreshToken
+        await vendor.save({ validateBeforeSave: false })
+
+        return {accessToken, refreshToken}
+        
+    } catch (error) {
+        throw new ApiError(500, "Something went wrong !")
+    }
+}
+
 const registerVendor = asyncHandler(async (req, res) => {
     const { username, fullname, email, password, address, phoneNumber, pinCode, bio } = req.body
 
@@ -83,6 +100,50 @@ const registerVendor = asyncHandler(async (req, res) => {
     )
 })
 
+const loginVendor = asyncHandler(async (req, res) => {
+    const { phoneNumber, password } = req.body
+
+    if (!phoneNumber) {
+        throw new ApiError(400, "Phone Number is required")
+    }
+
+    const vendor = await Vendor.findOne({ phoneNumber })
+
+    if (!vendor) {
+        throw new ApiError(404, "Vendor doesn't exist")
+    }
+
+    const isPasswordValid = await vendor.isPasswordCorrect(password)
+
+    if (!isPasswordValid) {
+        throw new ApiError(401, "Invalid vendor credentials")
+    }
+
+    const { accessToken, refreshToken } = await generateAccessAndRefreshToken(vendor._id)
+
+    const loggedInVendor = await Vendor.findById(vendor._id).select("-password -refreshToken")
+
+    const options = {
+        httpOnly: true,
+        secure: true
+    }
+
+    return res
+    .status(200)
+    .cookie("accessToken", accessToken, options)
+    .cookie("refreshToken", refreshToken, options)
+    .json(
+        new ApiResponse(
+            200,
+            {
+                vendor: loggedInVendor, accessToken, refreshToken
+            }, 
+            "Vendor loggedIn successfully"
+        )
+    )
+})
+
 export {
-    registerVendor
+    registerVendor,
+    loginVendor
 }

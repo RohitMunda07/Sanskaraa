@@ -1,4 +1,5 @@
 import {
+    loginVendor,
     registerVendor
 } from "../controllers/vendor.controller.js"
 import { Router } from "express"
@@ -19,6 +20,10 @@ router.route("/register").post(
         }
     ]),
     registerVendor
+)
+
+router.route("/login").post(
+    loginVendor
 )
 
 export default router

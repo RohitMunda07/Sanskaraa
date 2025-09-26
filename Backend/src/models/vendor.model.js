@@ -108,9 +108,9 @@ vendorSchema.methods.generateAccessToken = function() {
     return jwt.sign(
         {
             _id: this._id,
-            password: this.password,
-            username: this.username,
-            fullname: this.fullname
+            email: this.email, 
+            fullname: this.fullname,
+            userType: 'vendor'
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
@@ -126,7 +126,7 @@ vendorSchema.methods.generateRefreshToken = function() {
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
-            expiresIn: REFRESH_TOKEN_EXPIRY
+            expiresIn: process.env.REFRESH_TOKEN_EXPIRY
         }
     )
 }
