@@ -2,6 +2,7 @@ import {
     registerVendor,
     loginVendor,
     logoutVendor,
+    refreshAccessToken,
 } from "../controllers/vendor.controller.js"
 import { Router } from "express"
 import { upload } from "../middlewares/multer.middleware.js"
@@ -30,6 +31,10 @@ router.route("/login").post(
 router.route("/logout").post(
     verifyJWT,
     logoutVendor
+)
+
+router.route("/refresh-token").get(
+    refreshAccessToken
 )
 
 export default router
